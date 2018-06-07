@@ -1,0 +1,15 @@
+#!/bin/bash
+
+install_extension() {
+	cd $HOME/.local/share/gnome-shell/extensions
+	if [ ! -d "$2" ]; then
+		git clone $1 $2
+		gnome-shell-extension-tool -e $2
+		echo "Installed extension '$2'."
+	else
+		echo "Extension '$2' already exists in '$(pwd)'".
+	fi
+}
+
+mkdir -p $HOME/.local/share/gnome-shell/extensions
+cat extensions | while read repository uuid; do install_extension $repository $uuid; done
