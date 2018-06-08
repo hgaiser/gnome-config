@@ -1,15 +1,92 @@
 #!/bin/bash
 
+# check if messages are to be printed using color
+unset ALL_OFF BOLD BLUE GREEN RED YELLOW
+
+if [[ -t 2 ]]; then
+	# prefer terminal safe colored and bold text when tput is supported
+	if tput setaf 0 &>/dev/null; then
+		ALL_OFF="$(tput sgr0)"
+		BOLD="$(tput bold)"
+		BLUE="${BOLD}$(tput setaf 4)"
+		GREEN="${BOLD}$(tput setaf 2)"
+		RED="${BOLD}$(tput setaf 1)"
+		YELLOW="${BOLD}$(tput setaf 3)"
+	else
+		ALL_OFF="\e[1;0m"
+		BOLD="\e[1;1m"
+		BLUE="${BOLD}\e[1;34m"
+		GREEN="${BOLD}\e[1;32m"
+		RED="${BOLD}\e[1;31m"
+		YELLOW="${BOLD}\e[1;33m"
+	fi
+fi
+readonly ALL_OFF BOLD BLUE GREEN RED YELLOW
+
+plain() {
+	local mesg=$1; shift
+	printf "${BOLD}    ${mesg}${ALL_OFF}\n" "$@" >&2
+}
+
+msg() {
+	local mesg=$1; shift
+	printf "${GREEN}==>${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@" >&2
+}
+
+msg2() {
+	local mesg=$1; shift
+	printf "${BLUE}  ->${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@" >&2
+}
+
+warning() {
+	local mesg=$1; shift
+	printf "${YELLOW}==> WARNING:${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@" >&2
+}
+
+error() {
+	local mesg=$1; shift
+	printf "${RED}==> ERROR:${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@" >&2
+}
+
 install_extension() {
 	cd $HOME/.local/share/gnome-shell/extensions
 	if [ ! -d "$2" ]; then
+		msg "Installing extension '$2'."
 		git clone $1 $2
 		gnome-shell-extension-tool -e $2
-		echo "Installed extension '$2'."
 	else
-		echo "Extension '$2' already exists in '$(pwd)'".
+		msg "Extension '$2' already exists in '$(pwd)'".
+	fi
+}
+
+install_aur() {
+	pacman -Qi $1 > /dev/null
+	if [ $? -ne 0 ]; then
+		msg "Installing package '$1' from AUR."
+		packer -S $1
+	else
+		msg "Package '$1' already installed."
 	fi
 }
 
 mkdir -p $HOME/.local/share/gnome-shell/extensions
 cat extensions | while read repository uuid; do install_extension $repository $uuid; done
+
+install_aur tilix
+install_aur numix-circle-arc-icons-git
+install_aur numix-circle-icon-theme-git
+install_aur arc-gtk-theme
+
+# TODO: Fix  this properly
+# pixel-save is "special", because the root of the repository is not the actual extension
+if [ -d $HOME/.local/share/gnome-shell/extensions/pixel-saver@deadalnix.me/pixel-saver@deadalnix.me ]; then
+	msg "Fixing pixel-saver extension."
+	mv $HOME/.local/share/gnome-shell/extensions/pixel-saver@deadalnix.me/pixel-saver@deadalnix.me/* $HOME/.local/share/gnome-shell/extensions/pixel-saver@deadalnix.me/
+	rmdir $HOME/.local/share/gnome-shell/extensions/pixel-saver@deadalnix.me/pixel-saver@deadalnix.me
+fi
+
+# set dconf values
+msg "Loading dconf settings."
+cat dconf.dump | dconf load /
+
+msg "Successfully configured gnome-shell."
