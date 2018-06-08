@@ -60,10 +60,10 @@ install_extension() {
 }
 
 install_aur() {
-	pacman -Qi $1 > /dev/null
+	pacman -Qi $1 &> /dev/null
 	if [ $? -ne 0 ]; then
 		msg "Installing package '$1' from AUR."
-		packer -S $1
+		packer -S --noedit --noconfirm $1
 	else
 		msg "Package '$1' already installed."
 	fi
