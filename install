@@ -69,13 +69,23 @@ install_aur() {
 	fi
 }
 
+install_arch() {
+	pacman -Qi $1 &> /dev/null
+	if [ $? -ne 0 ]; then
+		msg "Installing package '$1' from arch repository."
+		pacman -S $1
+	else
+		msg "Package '$1' already installed."
+	fi
+}
+
 mkdir -p $HOME/.local/share/gnome-shell/extensions
 cat extensions | while read repository uuid; do install_extension $repository $uuid; done
 
 install_aur tilix-bin
 install_aur numix-circle-arc-icons-git
 install_aur numix-circle-icon-theme-git
-install_aur arc-gtk-theme-git
+install_arch arc-gtk-theme
 
 # TODO: Fix  this properly
 # pixel-save is "special", because the root of the repository is not the actual extension
