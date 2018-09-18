@@ -88,11 +88,17 @@ install_aur numix-circle-icon-theme-git
 install_arch arc-gtk-theme
 
 # TODO: Fix  this properly
-# pixel-save is "special", because the root of the repository is not the actual extension
+# these "special", because the root of the repository is not the actual extension
 if [ -d $HOME/.local/share/gnome-shell/extensions/pixel-saver@deadalnix.me/pixel-saver@deadalnix.me ]; then
 	msg "Fixing pixel-saver extension."
 	mv $HOME/.local/share/gnome-shell/extensions/pixel-saver@deadalnix.me/pixel-saver@deadalnix.me/* $HOME/.local/share/gnome-shell/extensions/pixel-saver@deadalnix.me/
 	rmdir $HOME/.local/share/gnome-shell/extensions/pixel-saver@deadalnix.me/pixel-saver@deadalnix.me
+fi
+
+if [ -d $HOME/.local/share/gnome-shell/extensions/alt-tab-workspace@kwalo.net/alt-tab-workspace@kwalo.net ]; then
+	msg "Fixing alt-tab-workspace extension."
+	mv $HOME/.local/share/gnome-shell/extensions/alt-tab-workspace@kwalo.net/alt-tab-workspace@kwalo.net/* $HOME/.local/share/gnome-shell/extensions/alt-tab-workspace@kwalo.net/
+	rmdir $HOME/.local/share/gnome-shell/extensions/alt-tab-workspace@kwalo.net/alt-tab-workspace@kwalo.net
 fi
 
 # set dconf values
