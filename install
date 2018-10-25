@@ -101,6 +101,13 @@ if [ -d $HOME/.local/share/gnome-shell/extensions/alt-tab-workspace@kwalo.net/al
 	rmdir $HOME/.local/share/gnome-shell/extensions/alt-tab-workspace@kwalo.net/alt-tab-workspace@kwalo.net
 fi
 
+if [ -d $HOME/.local/share/gnome-shell/extensions/sound-output-device-chooser@kgshank.net/sound-output-device-chooser@kgshank.net ]; then
+	msg "Fixing sound-output-device-chooser extension."
+	shopt -s dotglob nullglob
+	mv $HOME/.local/share/gnome-shell/extensions/sound-output-device-chooser@kgshank.net/sound-output-device-chooser@kgshank.net/* $HOME/.local/share/gnome-shell/extensions/sound-output-device-chooser@kgshank.net/
+	rmdir $HOME/.local/share/gnome-shell/extensions/sound-output-device-chooser@kgshank.net/sound-output-device-chooser@kgshank.net
+fi
+
 # set dconf values
 msg "Loading dconf settings."
 cat dconf.dump | dconf load /
