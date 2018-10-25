@@ -82,7 +82,7 @@ install_arch() {
 mkdir -p $HOME/.local/share/gnome-shell/extensions
 cat extensions | while read repository uuid; do install_extension $repository $uuid; done
 
-install_aur tilix-bin
+install_arch tilix
 install_aur numix-circle-arc-icons-git
 install_aur numix-circle-icon-theme-git
 install_arch arc-gtk-theme
