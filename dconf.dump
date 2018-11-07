@@ -17,6 +17,7 @@ overview-mode-key=false
 dynamic-workspaces=false
 workspaces-only-on-primary=false
 edge-tiling=false
+overlay-key='Super_R'
 
 [org/gnome/desktop/interface]
 clock-show-seconds=true
