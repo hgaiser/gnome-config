@@ -13,9 +13,10 @@ tray-pos='right'
 panel-position-key='left'
 overview-mode-key=false
 
-[org/gnome/shell/overrides]
+[org/gnome/mutter]
 dynamic-workspaces=false
 workspaces-only-on-primary=false
+edge-tiling=false
 
 [org/gnome/desktop/interface]
 clock-show-seconds=true
