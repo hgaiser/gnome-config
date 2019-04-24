@@ -54,6 +54,17 @@ switch-to-workspace-9=['<Super>9']
 switch-to-workspace-6=['<Super>6']
 switch-to-workspace-7=['<Super>7']
 
+[org/gnome/shell/keybindings]
+switch-to-application-1=@as []
+switch-to-application-2=@as []
+switch-to-application-3=@as []
+switch-to-application-4=@as []
+switch-to-application-5=@as []
+switch-to-application-6=@as []
+switch-to-application-7=@as []
+switch-to-application-8=@as []
+switch-to-application-9=@as []
+
 [com/gexperts/Tilix]
 new-window-inherit-state=true
 use-overlay-scrollbar=true
