@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# check if messages are to be printed using color
+# Check if messages are to be printed using color.
 unset ALL_OFF BOLD BLUE GREEN RED YELLOW
 
 if [[ -t 2 ]]; then
-	# prefer terminal safe colored and bold text when tput is supported
+	# Prefer terminal safe colored and bold text when tput is supported.
 	if tput setaf 0 &>/dev/null; then
 		ALL_OFF="$(tput sgr0)"
 		BOLD="$(tput bold)"
@@ -87,8 +87,8 @@ install_aur numix-circle-arc-icons-git
 install_aur numix-circle-icon-theme-git
 install_arch arc-gtk-theme
 
-# TODO: Fix  this properly
-# these "special", because the root of the repository is not the actual extension
+# TODO: Fix  this properly.
+# These "special", because the root of the repository is not the actual extension.
 if [ -d $HOME/.local/share/gnome-shell/extensions/pixel-saver@deadalnix.me/pixel-saver@deadalnix.me ]; then
 	msg "Fixing pixel-saver extension."
 	mv $HOME/.local/share/gnome-shell/extensions/pixel-saver@deadalnix.me/pixel-saver@deadalnix.me/* $HOME/.local/share/gnome-shell/extensions/pixel-saver@deadalnix.me/
@@ -108,8 +108,12 @@ if [ -d $HOME/.local/share/gnome-shell/extensions/sound-output-device-chooser@kg
 	rmdir $HOME/.local/share/gnome-shell/extensions/sound-output-device-chooser@kgshank.net/sound-output-device-chooser@kgshank.net
 fi
 
-# set dconf values
+# Set dconf values.
 msg "Loading dconf settings."
 cat dconf.dump | dconf load /
+
+# Load Tilix settings.
+msg "Loading Tilix settings."
+./tilix-config/install
 
 msg "Successfully configured gnome-shell."
