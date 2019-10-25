@@ -88,11 +88,11 @@ install_aur numix-circle-icon-theme-git
 install_arch arc-gtk-theme
 
 # TODO: Fix  this properly.
-# These "special", because the root of the repository is not the actual extension.
-if [ -d $HOME/.local/share/gnome-shell/extensions/pixel-saver@deadalnix.me/pixel-saver@deadalnix.me ]; then
-	msg "Fixing pixel-saver extension."
-	mv $HOME/.local/share/gnome-shell/extensions/pixel-saver@deadalnix.me/pixel-saver@deadalnix.me/* $HOME/.local/share/gnome-shell/extensions/pixel-saver@deadalnix.me/
-	rmdir $HOME/.local/share/gnome-shell/extensions/pixel-saver@deadalnix.me/pixel-saver@deadalnix.me
+# These are "special", because the root of the repository is not the actual extension.
+if [ -d $HOME/.local/share/gnome-shell/extensions/unite@hardpixel.eu ]; then
+	msg "Fixing unite extension."
+	mv $HOME/.local/share/gnome-shell/extensions/unite@hardpixel.eu/unite@hardpixel.eu/* $HOME/.local/share/gnome-shell/extensions/unite@hardpixel.eu
+	rmdir $HOME/.local/share/gnome-shell/extensions/unite@hardpixel.eu/unite@hardpixel.eu
 fi
 
 if [ -d $HOME/.local/share/gnome-shell/extensions/alt-tab-workspace@kwalo.net/alt-tab-workspace@kwalo.net ]; then
