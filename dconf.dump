@@ -1,38 +1,45 @@
-[org/gnome/settings-daemon/plugins/media-keys]
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+[com/gexperts/Tilix]
+control-scroll-zoom=true
+enable-wide-handle=false
+new-instance-mode='new-window'
+new-window-inherit-state=true
+prompt-on-close=true
+quake-specific-monitor=0
+sidebar-on-right=true
+terminal-title-show-when-single=false
+terminal-title-style='none'
+theme-variant='dark'
+unsafe-paste-alert=false
+use-overlay-scrollbar=true
+use-tabs=true
+warn-vte-config-issue=false
+window-save-state=true
+window-state=43908
+window-style='borderless'
 
-[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
-binding='<Super>t'
-command='tilix'
-name='Tilix'
+[com/gexperts/Tilix/keybindings]
+session-add-down='<Shift><Super>Return'
+session-add-right='<Super>Return'
 
-[org/gnome/shell/extensions/topicons]
-tray-pos='right'
-
-[org/gnome/shell/extensions/workspacebar]
-panel-position-key='left'
-overview-mode-key=false
-
-[org/gnome/mutter]
-dynamic-workspaces=false
-workspaces-only-on-primary=false
-edge-tiling=false
-overlay-key='Super_R'
+[org/gnome/desktop/input-sources]
+xkb-options=['compose:caps']
 
 [org/gnome/desktop/interface]
-clock-show-seconds=true
-icon-theme='Numix-Circle'
-enable-animations=false
-gtk-theme='Arc-Darker'
 clock-show-date=true
+clock-show-seconds=true
+enable-animations=false
+gtk-im-module='gtk-im-context-simple'
+gtk-theme='Arc-Darker'
+icon-theme='Numix-Circle'
 
-[org/gnome/desktop/wm/preferences]
-num-workspaces=10
-workspace-names=['dev', 'web', 'mail', 'chat', 'doc', 'misc', 'viz', '8', '9', '0']
+[org/gnome/desktop/peripherals/touchpad]
+tap-to-click=true
+two-finger-scrolling-enabled=true
 
 [org/gnome/desktop/wm/keybindings]
 close=['<Alt>F4', '<Super>q']
 move-to-workspace-1=['<Shift><Super>1']
+move-to-workspace-10=['<Shift><Super>0']
 move-to-workspace-2=['<Shift><Super>2']
 move-to-workspace-3=['<Shift><Super>3']
 move-to-workspace-4=['<Shift><Super>4']
@@ -42,17 +49,54 @@ move-to-workspace-7=['<Shift><Super>7']
 move-to-workspace-8=['<Shift><Super>8']
 move-to-workspace-9=['<Shift><Super>9']
 panel-main-menu=['<Super>d']
+switch-applications=['<Super>Tab']
 switch-to-workspace-1=['<Super>1']
 switch-to-workspace-10=['<Super>0']
+switch-to-workspace-2=['<Super>2']
 switch-to-workspace-3=['<Super>3']
 switch-to-workspace-4=['<Super>4']
 switch-to-workspace-5=['<Super>5']
-move-to-workspace-10=['<Shift><Super>0']
-switch-to-workspace-2=['<Super>2']
-switch-to-workspace-8=['<Super>8']
-switch-to-workspace-9=['<Super>9']
 switch-to-workspace-6=['<Super>6']
 switch-to-workspace-7=['<Super>7']
+switch-to-workspace-8=['<Super>8']
+switch-to-workspace-9=['<Super>9']
+switch-windows=['<Alt>Tab']
+
+[org/gnome/desktop/wm/preferences]
+num-workspaces=10
+workspace-names=['dev', 'web', 'mail', 'chat', 'doc', 'misc', 'viz', '8', '9', '0']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Super>t'
+command='tilix'
+name='Tilix'
+
+[org/gnome/shell/extensions/topicons]
+tray-pos='right'
+
+[org/gnome/shell/extensions/unite]
+extend-left-box=false
+hide-activities-button='always'
+hide-dropdown-arrows=true
+restrict-to-primary-screen=false
+show-desktop-name=true
+show-legacy-tray=false
+
+[org/gnome/shell/extensions/workspacebuttons]
+active-color='#73a0d1'
+buttons-position-change=false
+buttons-position-index=1
+click-to-activate=true
+empty-color='#222222'
+empty-workspace-style=true
+hover-color='#ffffff'
+inactive-color='#676767'
+urgent-color='#e70909'
+urgent-workspace-style=true
+workspace-label-indicator=false
+workspace-label-indicators=['', '', '']
+workspace-label-name=true
+workspace-label-number=false
 
 [org/gnome/shell/keybindings]
 switch-to-application-1=@as []
@@ -65,31 +109,7 @@ switch-to-application-7=@as []
 switch-to-application-8=@as []
 switch-to-application-9=@as []
 
-[com/gexperts/Tilix]
-new-window-inherit-state=true
-use-overlay-scrollbar=true
-sidebar-on-right=true
-terminal-title-style='none'
-window-state=43908
-theme-variant='dark'
-use-tabs=true
-control-scroll-zoom=true
-window-save-state=true
-terminal-title-show-when-single=false
-window-style='borderless'
-
-[com/gexperts/Tilix/profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
-foreground-color='#A7A7A7'
-visible-name='Default'
-palette=['#1E1E1E', '#CF6A4C', '#8F9D6A', '#F9EE98', '#7587A6', '#9B859D', '#AFC4DB', '#A7A7A7', '#5F5A60', '#CF6A4C', '#8F9D6A', '#F9EE98', '#7587A6', '#9B859D', '#AFC4DB', '#FFFFFF']
-badge-color-set=false
-cursor-colors-set=false
-highlight-colors-set=false
-use-theme-colors=false
-bold-color-set=false
-scrollback-unlimited=true
-background-color='#000000000000'
-
-[com/gexperts/Tilix/keybindings]
-session-add-right='<Super>Return'
-session-add-down='<Shift><Super>Return'
+[org/gnome/shell/overrides]
+dynamic-workspaces=false
+edge-tiling=false
+workspaces-only-on-primary=false
