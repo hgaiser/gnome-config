@@ -79,7 +79,7 @@ extend-left-box=false
 hide-activities-button='always'
 hide-dropdown-arrows=true
 restrict-to-primary-screen=false
-show-desktop-name=true
+show-desktop-name=false
 show-legacy-tray=false
 
 [org/gnome/shell/extensions/workspacebuttons]
