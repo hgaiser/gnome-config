@@ -113,3 +113,8 @@ switch-to-application-9=@as []
 dynamic-workspaces=false
 edge-tiling=false
 workspaces-only-on-primary=false
+
+[org/gnome/mutter]
+dynamic-workspaces=false
+workspaces-only-on-primary=false
+edge-tiling=false
