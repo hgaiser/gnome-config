@@ -108,6 +108,13 @@ if [ -d $HOME/.local/share/gnome-shell/extensions/sound-output-device-chooser@kg
 	rmdir $HOME/.local/share/gnome-shell/extensions/sound-output-device-chooser@kgshank.net/sound-output-device-chooser@kgshank.net
 fi
 
+if [ -d $HOME/.local/share/gnome-shell/extensions/disable-workspace-switcher-popup@github.com/disable-workspace-switcher-popup@github.com ]; then
+	msg "Fixing sound-output-device-chooser extension."
+	shopt -s dotglob nullglob
+	mv $HOME/.local/share/gnome-shell/extensions/disable-workspace-switcher-popup@github.com/disable-workspace-switcher-popup@github.com/* $HOME/.local/share/gnome-shell/extensions/sound-output-device-chooser@kgshank.net/
+	rmdir $HOME/.local/share/gnome-shell/extensions/disable-workspace-switcher-popup@github.com/disable-workspace-switcher-popup@github.com
+fi
+
 # Set dconf values.
 msg "Loading dconf settings."
 cat dconf.dump | dconf load /
