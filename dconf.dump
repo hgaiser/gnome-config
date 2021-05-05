@@ -21,20 +21,43 @@ window-style='borderless'
 session-add-down='<Shift><Super>Return'
 session-add-right='<Super>Return'
 
+
+[org/gnome/desktop/calendar]
+show-weekdate=true
+
 [org/gnome/desktop/input-sources]
-xkb-options=['compose:caps']
+per-window=false
+sources=[('xkb', 'us')]
+xkb-options=['compose:caps', 'lv3:ralt_switch']
 
 [org/gnome/desktop/interface]
 clock-show-date=true
 clock-show-seconds=true
+clock-show-weekday=false
+document-font-name='Cantarell 11'
 enable-animations=false
+enable-hot-corners=false
+font-antialiasing='grayscale'
+font-hinting='slight'
+font-name='Cantarell 11'
 gtk-im-module='gtk-im-context-simple'
 gtk-theme='Arc-Darker'
 icon-theme='Numix-Circle'
+monospace-font-name='Source Code Pro 10'
+show-battery-percentage=true
+toolkit-accessibility=false
+
+[org/gnome/desktop/peripherals/mouse]
+accel-profile='flat'
+natural-scroll=false
 
 [org/gnome/desktop/peripherals/touchpad]
 tap-to-click=true
 two-finger-scrolling-enabled=true
+
+[org/gnome/desktop/sound]
+event-sounds=false
+theme-name='__custom'
 
 [org/gnome/desktop/wm/keybindings]
 close=['<Alt>F4', '<Super>q']
@@ -66,21 +89,44 @@ switch-windows=['<Alt>Tab']
 num-workspaces=10
 workspace-names=['dev', 'web', 'mail', 'chat', 'doc', 'misc', 'viz', '8', '9', '0']
 
+[org/gnome/mutter]
+dynamic-workspaces=false
+
+[org/gnome/power-manager]
+info-history-type='charge'
+info-last-device='/org/freedesktop/UPower/devices/battery_BAT0'
+info-page-number=0
+info-stats-type='discharge-accuracy'
+
+[org/gnome/settings-daemon/plugins/media-keys]
+area-screenshot-clip=['<Shift><Super>s']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
 binding='<Super>t'
-command='tilix'
+command='tilix --maximize'
 name='Tilix'
+
+[org/gnome/shell/app-switcher]
+current-workspace-only=true
+
+[org/gnome/shell/extensions/sound-output-device-chooser]
+expand-volume-menu=false
+hide-on-single-device=true
+icon-theme='monochrome'
+ports-settings='{"version":2,"ports":[]}'
 
 [org/gnome/shell/extensions/topicons]
 tray-pos='right'
 
 [org/gnome/shell/extensions/unite]
-extend-left-box=false
+extend-left-box=true
 hide-activities-button='always'
 hide-dropdown-arrows=true
 restrict-to-primary-screen=false
 show-desktop-name=false
 show-legacy-tray=false
+window-buttons-theme='default-dark'
 
 [org/gnome/shell/extensions/workspacebuttons]
 active-color='#73a0d1'
@@ -113,8 +159,3 @@ switch-to-application-9=@as []
 dynamic-workspaces=false
 edge-tiling=false
 workspaces-only-on-primary=false
-
-[org/gnome/mutter]
-dynamic-workspaces=false
-workspaces-only-on-primary=false
-edge-tiling=false

@@ -53,7 +53,7 @@ install_extension() {
 	if [ ! -d "$2" ]; then
 		msg "Installing extension '$2'."
 		git clone $1 $2
-		gnome-shell-extension-tool -e $2
+		gnome-extensions enable $2
 	else
 		msg "Extension '$2' already exists in '$(pwd)'".
 	fi
