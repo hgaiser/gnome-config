@@ -109,9 +109,9 @@ if [ -d $HOME/.local/share/gnome-shell/extensions/sound-output-device-chooser@kg
 fi
 
 if [ -d $HOME/.local/share/gnome-shell/extensions/disable-workspace-switcher-popup@github.com/disable-workspace-switcher-popup@github.com ]; then
-	msg "Fixing sound-output-device-chooser extension."
+	msg "Fixing disable-workspace-switcher-popup extension."
 	shopt -s dotglob nullglob
-	mv $HOME/.local/share/gnome-shell/extensions/disable-workspace-switcher-popup@github.com/disable-workspace-switcher-popup@github.com/* $HOME/.local/share/gnome-shell/extensions/sound-output-device-chooser@kgshank.net/
+	mv $HOME/.local/share/gnome-shell/extensions/disable-workspace-switcher-popup@github.com/disable-workspace-switcher-popup@github.com/* $HOME/.local/share/gnome-shell/extensions/disable-workspace-switcher-popup@github.com/
 	rmdir $HOME/.local/share/gnome-shell/extensions/disable-workspace-switcher-popup@github.com/disable-workspace-switcher-popup@github.com
 fi
 
