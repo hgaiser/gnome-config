@@ -87,7 +87,7 @@ switch-windows=['<Alt>Tab']
 
 [org/gnome/desktop/wm/preferences]
 num-workspaces=10
-workspace-names=['dev', 'web', 'mail', 'chat', 'doc', 'misc', 'viz', '8', '9', '0']
+workspace-names=['dev', 'web', 'mail', 'chat', 'doc', 'misc', '7', '8', '9', '0']
 
 [org/gnome/mutter]
 dynamic-workspaces=false
