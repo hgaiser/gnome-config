@@ -16,7 +16,7 @@ xkb-options=['lv3:ralt_switch', 'compose:caps']
 [org/gnome/desktop/interface]
 clock-show-seconds=true
 enable-hot-corners=false
-gtk-theme='Adapta-Nokto-Eta'
+gtk-theme='Adapta-Eta'
 icon-theme='Numix-Circle'
 monospace-font-name='Source Code Pro 10'
 show-battery-percentage=true
