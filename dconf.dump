@@ -141,3 +141,6 @@ restrict-to-primary-screen=false
 show-desktop-name=false
 show-legacy-tray=false
 window-buttons-theme='default-dark'
+
+[org/gnome/desktop/wm/keybindings]
+close=['<Alt>F4', '<Super>q']
