@@ -52,7 +52,7 @@ name='Alacritty'
 sleep-inactive-ac-type='nothing'
 
 [org/gnome/shell]
-favorite-apps=['Alacritty.desktop', 'firefox.desktop', 'thunderbird.desktop', 'teams-for-linux.desktop', 'slack.desktop', 'whatsdesk.desktop', 'signal-desktop.desktop', 'telegramdesktop.desktop', 'com.spotify.Client.desktop']
+favorite-apps=['Alacritty.desktop', 'firefox.desktop', 'thunderbird.desktop', 'slack.desktop', 'teams-for-linux.desktop', 'whatsdesk.desktop', 'signal-desktop.desktop', 'telegramdesktop.desktop', 'com.spotify.Client.desktop']
 
 [org/gnome/shell/app-switcher]
 current-workspace-only=true
