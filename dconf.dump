@@ -1,101 +1,43 @@
-[com/gexperts/Tilix]
-control-scroll-zoom=true
-enable-wide-handle=false
-new-instance-mode='new-window'
-new-window-inherit-state=true
-prompt-on-close=true
-quake-specific-monitor=0
-sidebar-on-right=true
-terminal-title-show-when-single=false
-terminal-title-style='none'
-theme-variant='dark'
-unsafe-paste-alert=false
-use-overlay-scrollbar=true
-use-tabs=true
-warn-vte-config-issue=false
-window-save-state=true
-window-state=43908
-window-style='borderless'
+# vim: ft=dosini
 
-[com/gexperts/Tilix/keybindings]
-session-add-down='<Shift><Super>Return'
-session-add-right='<Super>Return'
-
+[org/gnome/desktop/background]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/gnome/LightBulb.jpg'
+primary-color='#ffffff'
+secondary-color='#000000'
 
 [org/gnome/desktop/calendar]
 show-weekdate=true
 
 [org/gnome/desktop/input-sources]
-per-window=false
-sources=[('xkb', 'us')]
-xkb-options=['compose:caps', 'lv3:ralt_switch']
+xkb-options=['lv3:ralt_switch', 'compose:caps']
 
 [org/gnome/desktop/interface]
-clock-show-date=true
 clock-show-seconds=true
-clock-show-weekday=false
-document-font-name='Cantarell 11'
-enable-animations=false
 enable-hot-corners=false
-font-antialiasing='grayscale'
-font-hinting='slight'
-font-name='Cantarell 11'
-gtk-im-module='gtk-im-context-simple'
-gtk-theme='Arc-Darker'
+gtk-theme='Adapta-Nokto-Eta'
 icon-theme='Numix-Circle'
 monospace-font-name='Source Code Pro 10'
 show-battery-percentage=true
-toolkit-accessibility=false
 
 [org/gnome/desktop/peripherals/mouse]
 accel-profile='flat'
 natural-scroll=false
 
 [org/gnome/desktop/peripherals/touchpad]
+speed=0.55160142348754437
 tap-to-click=true
-two-finger-scrolling-enabled=true
 
 [org/gnome/desktop/sound]
 event-sounds=false
-theme-name='__custom'
-
-[org/gnome/desktop/wm/keybindings]
-close=['<Alt>F4', '<Super>q']
-move-to-workspace-1=['<Shift><Super>1']
-move-to-workspace-10=['<Shift><Super>0']
-move-to-workspace-2=['<Shift><Super>2']
-move-to-workspace-3=['<Shift><Super>3']
-move-to-workspace-4=['<Shift><Super>4']
-move-to-workspace-5=['<Shift><Super>5']
-move-to-workspace-6=['<Shift><Super>6']
-move-to-workspace-7=['<Shift><Super>7']
-move-to-workspace-8=['<Shift><Super>8']
-move-to-workspace-9=['<Shift><Super>9']
-switch-applications=['<Super>Tab']
-switch-to-workspace-1=['<Super>1']
-switch-to-workspace-10=['<Super>0']
-switch-to-workspace-2=['<Super>2']
-switch-to-workspace-3=['<Super>3']
-switch-to-workspace-4=['<Super>4']
-switch-to-workspace-5=['<Super>5']
-switch-to-workspace-6=['<Super>6']
-switch-to-workspace-7=['<Super>7']
-switch-to-workspace-8=['<Super>8']
-switch-to-workspace-9=['<Super>9']
-switch-windows=['<Alt>Tab']
-
-[org/gnome/desktop/wm/preferences]
-num-workspaces=10
-workspace-names=['dev', 'web', 'mail', 'chat', 'doc', 'misc', '7', '8', '9', '0']
 
 [org/gnome/mutter]
-dynamic-workspaces=false
+workspaces-only-on-primary=false
 
-[org/gnome/power-manager]
-info-history-type='charge'
-info-last-device='/org/freedesktop/UPower/devices/battery_BAT0'
-info-page-number=0
-info-stats-type='discharge-accuracy'
+[org/gnome/nautilus/preferences]
+default-folder-viewer='list-view'
+search-view='list-view'
 
 [org/gnome/settings-daemon/plugins/media-keys]
 area-screenshot-clip=['<Shift><Super>s']
@@ -103,20 +45,93 @@ custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybin
 
 [org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
 binding='<Super>t'
-command='tilix --maximize'
-name='Tilix'
+command='alacritty'
+name='Alacritty'
+
+[org/gnome/settings-daemon/plugins/power]
+sleep-inactive-ac-type='nothing'
+
+[org/gnome/shell]
+favorite-apps=['Alacritty.desktop', 'firefox.desktop', 'thunderbird.desktop', 'teams-for-linux.desktop', 'slack.desktop', 'whatsdesk.desktop', 'signal-desktop.desktop', 'telegramdesktop.desktop', 'com.spotify.Client.desktop']
 
 [org/gnome/shell/app-switcher]
 current-workspace-only=true
+
+[org/gnome/shell/extensions/arch-update]
+update-cmd="tilix --maximize -e 'sh -c  \"sudo pacman -Syu ; echo Done - Press enter to exit; read\" '"
+
+[org/gnome/shell/extensions/dash-to-panel]
+animate-app-switch=true
+animate-appicon-hover=false
+animate-appicon-hover-animation-convexity={'RIPPLE': 2.0, 'PLANK': 1.0, 'SIMPLE': 0.0}
+animate-appicon-hover-animation-extent={'RIPPLE': 4, 'PLANK': 4, 'SIMPLE': 1}
+animate-appicon-hover-animation-type='SIMPLE'
+animate-window-launch=true
+appicon-margin=0
+appicon-padding=4
+available-monitors=[0]
+click-action='CYCLE'
+dot-position='TOP'
+dot-style-focused='METRO'
+dot-style-unfocused='DOTS'
+group-apps=true
+hide-overview-on-startup=true
+hot-keys=false
+hotkeys-overlay-combo='TEMPORARILY'
+intellihide=false
+intellihide-animation-time=10
+intellihide-behaviour='ALL_WINDOWS'
+intellihide-hide-from-windows=true
+isolate-workspaces=false
+leftbox-padding=-1
+leftbox-size=0
+overview-click-to-exit=true
+panel-anchors='{"0":"START"}'
+panel-element-positions='{"0":[{"element":"activitiesButton","visible":false,"position":"stackedTL"},{"element":"leftBox","visible":true,"position":"stackedTL"},{"element":"showAppsButton","visible":false,"position":"stackedTL"},{"element":"taskbar","visible":true,"position":"stackedTL"},{"element":"centerBox","visible":true,"position":"stackedTL"},{"element":"dateMenu","visible":true,"position":"centerMonitor"},{"element":"rightBox","visible":true,"position":"stackedBR"},{"element":"systemMenu","visible":true,"position":"stackedBR"},{"element":"desktopButton","visible":false,"position":"stackedBR"}]}'
+panel-element-positions-monitors-sync=true
+panel-lengths='{"0":100,"1":100}'
+panel-positions='{"0":"TOP","1":"TOP"}'
+panel-sizes='{"0":27,"1":24}'
+primary-monitor=0
+secondarymenu-contains-showdetails=true
+show-appmenu=false
+show-favorites=true
+show-running-apps=true
+show-tooltip=false
+show-window-previews=false
+status-icon-padding=4
+stockgs-keep-dash=false
+stockgs-keep-top-panel=false
+stockgs-panelbtn-click-only=false
+trans-bg-color='#000000'
+trans-dynamic-anim-target=1.0
+trans-dynamic-anim-time=300
+trans-dynamic-behavior='ALL_WINDOWS'
+trans-dynamic-distance=20
+trans-panel-opacity=0.59999999999999998
+trans-use-custom-bg=false
+trans-use-custom-opacity=false
+trans-use-dynamic-opacity=false
+tray-padding=4
+tray-size=0
+window-preview-title-position='TOP'
+
+[org/gnome/shell/extensions/display-brightness-ddcutil]
+show-all-slider=true
+show-value-label=true
+
+[org/gnome/shell/extensions/extension-list]
+delete-button=true
+hide-disabled=false
+unpin-button=false
+
+[org/gnome/shell/extensions/gestureImprovements]
+touchpad-speed-scale=1.0
 
 [org/gnome/shell/extensions/sound-output-device-chooser]
 expand-volume-menu=false
 hide-on-single-device=true
 icon-theme='monochrome'
-ports-settings='{"version":2,"ports":[]}'
-
-[org/gnome/shell/extensions/topicons]
-tray-pos='right'
 
 [org/gnome/shell/extensions/unite]
 extend-left-box=true
@@ -126,36 +141,3 @@ restrict-to-primary-screen=false
 show-desktop-name=false
 show-legacy-tray=false
 window-buttons-theme='default-dark'
-
-[org/gnome/shell/extensions/workspacebuttons]
-active-color='#73a0d1'
-buttons-position-change=false
-buttons-position-index=1
-click-to-activate=true
-empty-color='#222222'
-empty-workspace-style=true
-hover-color='#ffffff'
-inactive-color='#676767'
-urgent-color='#e70909'
-urgent-workspace-style=true
-workspace-label-indicator=false
-workspace-label-indicators=['', '', '']
-workspace-label-name=true
-workspace-label-number=false
-
-[org/gnome/shell/keybindings]
-switch-to-application-1=@as []
-switch-to-application-2=@as []
-switch-to-application-3=@as []
-switch-to-application-4=@as []
-switch-to-application-5=@as []
-switch-to-application-6=@as []
-switch-to-application-7=@as []
-switch-to-application-8=@as []
-switch-to-application-9=@as []
-toggle-overview=['<Super>d']
-
-[org/gnome/shell/overrides]
-dynamic-workspaces=false
-edge-tiling=false
-workspaces-only-on-primary=false

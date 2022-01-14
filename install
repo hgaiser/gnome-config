@@ -48,14 +48,22 @@ error() {
 	printf "${RED}==> ERROR:${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@" >&2
 }
 
+exit_error() {
+	error "$1"
+	exit 1
+}
+
 install_extension() {
-	cd $HOME/.local/share/gnome-shell/extensions
-	if [ ! -d "$2" ]; then
-		msg "Installing extension '$2'."
-		git clone $1 $2
-		gnome-extensions enable $2
-	else
+	local extension_id=$1
+	local uuid=$2
+
+	if gnome-extensions info "$uuid" &> /dev/null; then
 		msg "Extension '$2' already exists in '$(pwd)'".
+	else
+		msg "Installing extension '$uuid'."
+		gnome-shell-extension-installer "$extension_id" --yes &> /dev/null || exit 1
+		msg2 "Done."
+		# gnome-extensions enable $2
 	fi
 }
 
@@ -79,48 +87,29 @@ install_arch() {
 	fi
 }
 
-mkdir -p $HOME/.local/share/gnome-shell/extensions
-cat extensions | while read repository uuid; do install_extension $repository $uuid; done
-
-install_arch tilix
-install_aur numix-circle-arc-icons-git
+msg "Installing dependencies."
+install_arch adapta-gtk-theme
 install_aur numix-circle-icon-theme-git
-install_arch arc-gtk-theme
+install_aur gnome-shell-extension-installer
 
-# TODO: Fix  this properly.
-# These are "special", because the root of the repository is not the actual extension.
-if [ -d $HOME/.local/share/gnome-shell/extensions/unite@hardpixel.eu ]; then
-	msg "Fixing unite extension."
-	mv $HOME/.local/share/gnome-shell/extensions/unite@hardpixel.eu/unite@hardpixel.eu/* $HOME/.local/share/gnome-shell/extensions/unite@hardpixel.eu
-	rmdir $HOME/.local/share/gnome-shell/extensions/unite@hardpixel.eu/unite@hardpixel.eu
-fi
+msg "Installing extensions."
+cat extensions | while read extension_id uuid; do install_extension $extension_id $uuid || error "Failed to install '$uuid'."; done
 
-if [ -d $HOME/.local/share/gnome-shell/extensions/alt-tab-workspace@kwalo.net/alt-tab-workspace@kwalo.net ]; then
-	msg "Fixing alt-tab-workspace extension."
-	mv $HOME/.local/share/gnome-shell/extensions/alt-tab-workspace@kwalo.net/alt-tab-workspace@kwalo.net/* $HOME/.local/share/gnome-shell/extensions/alt-tab-workspace@kwalo.net/
-	rmdir $HOME/.local/share/gnome-shell/extensions/alt-tab-workspace@kwalo.net/alt-tab-workspace@kwalo.net
-fi
+msg "Updating extensions..."
+gnome-shell-extension-installer --update --yes &> /dev/null \
+	|| exit_error "Failed to update extensions."
+msg2 "Done."
 
-if [ -d $HOME/.local/share/gnome-shell/extensions/sound-output-device-chooser@kgshank.net/sound-output-device-chooser@kgshank.net ]; then
-	msg "Fixing sound-output-device-chooser extension."
-	shopt -s dotglob nullglob
-	mv $HOME/.local/share/gnome-shell/extensions/sound-output-device-chooser@kgshank.net/sound-output-device-chooser@kgshank.net/* $HOME/.local/share/gnome-shell/extensions/sound-output-device-chooser@kgshank.net/
-	rmdir $HOME/.local/share/gnome-shell/extensions/sound-output-device-chooser@kgshank.net/sound-output-device-chooser@kgshank.net
-fi
-
-if [ -d $HOME/.local/share/gnome-shell/extensions/disable-workspace-switcher-popup@github.com/disable-workspace-switcher-popup@github.com ]; then
-	msg "Fixing disable-workspace-switcher-popup extension."
-	shopt -s dotglob nullglob
-	mv $HOME/.local/share/gnome-shell/extensions/disable-workspace-switcher-popup@github.com/disable-workspace-switcher-popup@github.com/* $HOME/.local/share/gnome-shell/extensions/disable-workspace-switcher-popup@github.com/
-	rmdir $HOME/.local/share/gnome-shell/extensions/disable-workspace-switcher-popup@github.com/disable-workspace-switcher-popup@github.com
+msg "Restarting shell..."
+if [ $XDG_SESSION_TYPE == 'wayland' ]; then
+	warning "Can't restart session in Wayland, please restart manually."
+else
+	gnome-shell-extension-installer --restart-shell
+	msg2 "Done."
 fi
 
 # Set dconf values.
 msg "Loading dconf settings."
 cat dconf.dump | dconf load /
 
-# Load Tilix settings.
-msg "Loading Tilix settings."
-./tilix-config/install
-
-msg "Successfully configured gnome-shell."
+msg2 "Successfully configured gnome-shell."
