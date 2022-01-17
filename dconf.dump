@@ -33,6 +33,8 @@ tap-to-click=true
 event-sounds=false
 
 [org/gnome/mutter]
+experimental-features=['scale-monitor-framebuffer']
+overlay-key='Super_R'
 workspaces-only-on-primary=false
 
 [org/gnome/nautilus/preferences]
@@ -145,3 +147,6 @@ window-buttons-theme='default-dark'
 
 [org/gnome/desktop/wm/keybindings]
 close=['<Alt>F4', '<Super>q']
+
+[org/gnome/shell/keybindings]
+toggle-overview=['<Super>d']
