@@ -81,16 +81,16 @@ install_arch() {
 	pacman -Qi $1 &> /dev/null
 	if [ $? -ne 0 ]; then
 		msg "Installing package '$1' from arch repository."
-		pacman -S $1
+		sudo pacman -S $1
 	else
 		msg "Package '$1' already installed."
 	fi
 }
 
 msg "Installing dependencies."
-install_arch adapta-gtk-theme
-install_aur numix-circle-icon-theme-git
-install_aur gnome-shell-extension-installer
+install_arch adapta-gtk-theme || exit_error "Failed to install theme."
+install_aur numix-circle-icon-theme-git || exit_error "Failed to install icon theme."
+install_aur gnome-shell-extension-installer || exit_error "Failed to install extension installer."
 
 msg "Installing extensions."
 cat extensions | while read extension_id uuid; do install_extension $extension_id $uuid || error "Failed to install '$uuid'."; done
@@ -99,14 +99,6 @@ msg "Updating extensions..."
 gnome-shell-extension-installer --update --yes &> /dev/null \
 	|| exit_error "Failed to update extensions."
 msg2 "Done."
-
-msg "Restarting shell..."
-if [ $XDG_SESSION_TYPE == 'wayland' ]; then
-	warning "Can't restart session in Wayland, please restart manually."
-else
-	gnome-shell-extension-installer --restart-shell
-	msg2 "Done."
-fi
 
 # Set dconf values.
 msg "Loading dconf settings."
