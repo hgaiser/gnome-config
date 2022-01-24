@@ -88,7 +88,6 @@ install_arch() {
 }
 
 msg "Installing dependencies."
-install_arch adapta-gtk-theme || exit_error "Failed to install theme."
 install_aur numix-circle-icon-theme-git || exit_error "Failed to install icon theme."
 install_aur gnome-shell-extension-installer || exit_error "Failed to install extension installer."
 
