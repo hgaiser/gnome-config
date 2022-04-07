@@ -58,7 +58,7 @@ install_extension() {
 	local uuid=$2
 
 	if gnome-extensions info "$uuid" &> /dev/null; then
-		msg "Extension '$2' already exists in '$(pwd)'".
+		msg "Extension '$2' already installed.".
 	else
 		msg "Installing extension '$uuid'."
 		gnome-shell-extension-installer "$extension_id" --yes &> /dev/null || exit 1
@@ -103,4 +103,4 @@ msg2 "Done."
 msg "Loading dconf settings."
 cat dconf.dump | dconf load /
 
-msg2 "Successfully configured gnome-shell."
+msg2 "Successfully configured gnome-shell; please restart Gnome for it to take effect."
